@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)file:///C:/GitHub/Mode/prueba1/index.html# -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModelHogar - Tu hogar, tu estilo</title>
+    <link href="./ModelHogar - Tu hogar, tu estilo_files/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./ModelHogar - Tu hogar, tu estilo_files/all.min.css">
+    <style>
+       .carousel {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding-top: 30%; /* Relación de aspecto 16:9 */
+        }
+
+        .carousel-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            height: 100%;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Cambiado a contain para mostrar la imagen completa */
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .carousel {
+                padding-top: 30%; /* Relación de aspecto 4:3 para móviles */
+            }
+
+        }
+
+        /* Estilos para el menú móvil */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-8 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="./ModelHogar - Tu hogar, tu estilo_files/logo.png" alt="ModelHogar Logo" class="h-11 mr-4">
+                </div>
+                <div class="hidden md:block">
+                    <p class=" text-3xl font-bold text-center text-[#173861]">Bienvenido a Tiendas Mode</p>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="text-gray-800 hover:text-blue-600 mx-3">Inicio</a>
+                    <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="text-gray-800 hover:text-blue-600 mx-3">Catálogo</a>
+                    <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="text-gray-800 hover:text-blue-600 mx-3">Nosotros</a>
+                    <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="text-gray-800 hover:text-blue-600 mx-3">Contacto</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="mobile-menu mt-4 md:hidden">
+                <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="block text-gray-800 hover:text-blue-600 py-2">Inicio</a>
+                <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="block text-gray-800 hover:text-blue-600 py-2">Productos</a>
+                <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="block text-gray-800 hover:text-blue-600 py-2">Nosotros</a>
+                <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="block text-gray-800 hover:text-blue-600 py-2">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <section class="container mx-auto px-6 py-8">
+        <div class="flex justify-center mb-8">
+            <img src="./ModelHogar - Tu hogar, tu estilo_files/modebanner.jpg" alt="Mode Banner" class="max-w-full h-auto">
+        </div>
+        <h1 class="text-3xl font-bold text-center mb-12">Descubre nuestras últimas promociones</h1>
+        <div class="carousel">
+            <div class="carousel-inner" style="transform: translateX(0%);">
+                <div class="carousel-item">
+                    <img src="./ModelHogar - Tu hogar, tu estilo_files/promo1.jpg" alt="Promo 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./ModelHogar - Tu hogar, tu estilo_files/promo2.jpg" alt="Promo 2">
+                </div>
+            </div>
+            <button class="carousel-control carousel-control-prev">&lt;</button>
+            <button class="carousel-control carousel-control-next">&gt;</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.querySelector('.carousel-inner');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-control-prev');
+            const nextBtn = document.querySelector('.carousel-control-next');
+            let currentIndex = 0;
+            let interval;
+
+            function showSlide(index) {
+                carousel.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            }
+
+            function startAutoSlide() {
+                interval = setInterval(nextSlide, 6000); // Cambia cada 6 segundos
+            }
+
+            function stopAutoSlide() {
+                clearInterval(interval);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAutoSlide();
+                startAutoSlide(); // Reinicia el temporizador
+            });
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopAutoSlide();
+                startAutoSlide(); // Reinicia el temporizador
+            });
+
+            // Iniciar el cambio automático
+            startAutoSlide();
+
+            // Detener el cambio automático cuando el mouse está sobre el carrusel
+            carousel.addEventListener('mouseenter', stopAutoSlide);
+            carousel.addEventListener('mouseleave', startAutoSlide);
+
+            // Código para el menú móvil
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        });
+        </script>
+
+        <section class="bg-white py-12">
+            <div class="container mx-auto px-6">
+                <h1 class="text-3xl font-bold text-center mb-8">Nuestros Productos</h1>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="./ModelHogar - Tu hogar, tu estilo_files/corona.jpg" alt="Producto 1" class="w-full h-80 object-cover mb-4 rounded">
+                        <h3 class="text-xl text-center font-semibold mb-2">Cervezas y Licores</h3>
+                        <p class="text-gray-600 text-center">De la mejor compañia cervecera ABInBev, tenemos para ti Corona, Victoria, Modelo Especial, Negra Modelo en sus
+                        diferentes presentaciones. Ademas una diversa gama de licores para cualquier gusto.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="./ModelHogar - Tu hogar, tu estilo_files/refrescos.jpg" alt="Producto 2" class="w-full h-80 object-cover mb-4 rounded">
+                        <h3 class="text-xl text-center font-semibold mb-2">Aguas Y Refrescos</h3>
+                        <p class="text-gray-600 text-center">Agua de las marcas E-Pura, Nestle, Ciel, etc; asi como tambien refrescos Coca-Cola, Pepsi-Cola, Garci-Crespo entre
+                        otros.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="./ModelHogar - Tu hogar, tu estilo_files/galletas.jpg" alt="Producto 3" class="w-full h-80 object-cover mb-4 rounded">
+                        <h3 class="text-xl text-center font-semibold mb-2">Dulces Y Botanas</h3>
+                        <p class="text-gray-600 text-center">Dulces y Botanas de Sabritas, Barcel, Gamesa, Marinela, Bimbo entre otros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="bg-gradient py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white text-shadow">Nosotros</h2>
+                <div class="bg-white rounded-lg shadow-xl p-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Representaciones H.G.P., S.A. de C.V.</h3>
+                    <div class="space-y-4 text-gray-600">
+                        <p>Es una empresa que se dedica a la compra-venta de cerveza, de las marcas Corona, Victoria, Modelo,
+                            Estrella y Montejo entre otros productos, siendo nuestro objetivo principal, el de posicionar el
+                            producto en el gusto del consumidor, y regular su precio de venta en el mercado.</p>
+                        <p>La empresa forma parte del Grupo H.G.P., funcionando a su vez como un satélite de "Casa García, S.A.
+                            de C.V.", la cual es un distribuidor independiente del Grupo Modelo de México, en la zona centro del
+                            estado de Veracruz.</p>
+                        <p>Con la finalidad de hacer más rentable el negocio se fueron adhiriendo productos afines con la imagen
+                            de las tiendas, tales como refrescos, botanas, cigarros, abarrotes, jugos, leches, desechables,
+                            galletas etc.; así como también Recargas Electrónicas y Pago de Servicios.</p>
+                        <p>En la actualidad, operamos a través de más de 50 puntos de venta, que se dividen en ModelHogar y
+                            ModelHogar Express, los cuales están situados en la ciudad de Córdoba y otros 8 municipios que son
+                            Monte Blanco, Fortín, Amatlan, Cuitlahuac, Potrero Nuevo, Paso del Macho, Omealca y Coscomatepec;
+                            obteniendo una posición relevante en nuestro segmento de mercado en la región, convirtiéndonos en
+                            los líderes de la zona.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="bg-gray-100 py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Contacto</h2>
+                <div class="flex flex-wrap -mx-4">
+                    <!-- Formulario de contacto -->
+                    <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                        <form class="bg-white rounded-lg shadow-xl p-8">
+                            <div class="mb-4">
+                                <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required="">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required="">
+                            </div>
+                            <div class="mb-6">
+                                <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje</label>
+                                <textarea id="mensaje" name="mensaje" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required=""></textarea>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                    Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Mapa y datos de contacto -->
+                    <div class="w-full md:w-1/2 px-4">
+                        <div class="bg-white rounded-lg shadow-xl p-8 h-full">
+                            <div class="mb-6">
+                                <iframe src="./ModelHogar - Tu hogar, tu estilo_files/embed.html" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="text-gray-700">
+                                <p class="mb-2"><strong>Correo:</strong> contacto@modetiendas.com.mx</p>
+                                <p class="mb-2"><strong>Teléfono:</strong> 2717129090 / 7124050</p>
+                                <p class="mb-2"><strong>Dirección:</strong> Carretera Estatal Córdoba-Veracruz Km. 340, Colonia
+                                    Zona Industrial, Código Postal 94690, Municipio Córdoba, Estado Veracruz, México</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-3">ModelHogar</h3>
+                    <p>Tu hogar, tu estilo</p>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-3">Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400">Inicio</a></li>
+                        <li><a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400">Catálogo</a></li>
+                        <li><a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400">Nosotros</a></li>
+                        <li><a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-3">Contacto</h4>
+                    <p>Email: info@modelhogar.mx</p>
+                    <p>Teléfono: (271) 71-2-90-90/71-2-40-50</p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-semibold mb-3">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                        <a href="file:///C:/GitHub/Mode/prueba1/index.html#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
+                <p>© 2024 ModelHogar. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.querySelector('.carousel-inner');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-control-prev');
+            const nextBtn = document.querySelector('.carousel-control-next');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                carousel.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            });
+        });
+    </script>
+
+
+</body></html>
