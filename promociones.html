@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promociones Mode</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link href="assets/css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/all.min.css">
     <style>
         @media (max-width: 768px) {
             .mobile-menu {
                 display: none;
             }
-
             .mobile-menu.active {
                 display: block;
             }
         }
-
         @media (max-width: 768px) {
-
             .prev,
             .next {
                 padding: 8px;
                 font-size: 16px;
             }
         }
-
         .modal {
             display: none;
             position: fixed;
@@ -39,7 +33,6 @@
             overflow: hidden;
             background-color: rgba(0, 0, 0, 0.9);
         }
-
         .modal-content {
             position: relative;
             width: 100%;
@@ -48,7 +41,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .close {
             color: white;
             position: absolute;
@@ -59,7 +51,6 @@
             cursor: pointer;
             z-index: 1010;
         }
-
         .mySlides {
             display: none;
             width: 100%;
@@ -67,13 +58,11 @@
             justify-content: center;
             align-items: center;
         }
-
         .mySlides img {
             max-width: 100%;
             max-height: 100vh;
             object-fit: contain;
         }
-
         .prev,
         .next {
             cursor: pointer;
@@ -92,23 +81,19 @@
             z-index: 1010;
             background-color: rgba(0, 0, 0, 0.5);
         }
-
         .prev {
             left: 0;
         }
-
         .next {
             right: 0;
             border-radius: 3px 0 0 3px;
         }
-
         .prev:hover,
         .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
-
 <body class="bg-gray-100">
     <header class="bg-white shadow-md">
         <nav class="container mx-auto px-4 py-3">
@@ -390,5 +375,4 @@
         }
     </script>
 </body>
-
 </html>
