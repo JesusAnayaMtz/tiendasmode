@@ -142,8 +142,7 @@
         </div>
     </div>
     <script>
-        var gridsPromos = new Array();
-        gridsPromos = {"cerveza":"BOTON_001.jpg","refresco":"BOTON_002.jpg","agua":"BOTON_003.jpg","cigarro":"BOTON_004.jpg","kits":"BOTON_005.jpg","abarrotes":"BOTON_006.jpg"};
+        const gridsPromos = {cerveza:"BOTON_001.jpg",refresco:"BOTON_002.jpg",agua:"BOTON_003.jpg",cigarro:"BOTON_004.jpg",kits:"BOTON_005.jpg",abarrotes:"BOTON_006.jpg"};
         const gridContent = document.querySelector('#grid-content');
         const slideContent = document.querySelector('#promos-content');
         const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg"]};
@@ -191,7 +190,7 @@
         }
 
         function deployPromoGrids() {
-            gridsPromos.map(function(image,item) {
+            gridsPromos.forEach((item,image) => {
                 var divC = document.createElement("div");
                 let img = document.createElement("img");
                 divC.classList.add("bg-grid","p-2","sm:p-4", "rounded-lg", "shadow-md","promo-grid");
