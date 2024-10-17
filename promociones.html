@@ -92,6 +92,12 @@
         .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
+        .bg-grid {
+            background-color: rgb(60, 125, 206);
+        }
+        .promo-grid :hover {
+            background-color: aqua;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -99,7 +105,7 @@
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="./imagenes/logo.png" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4">
+                    <img src="./assets/images/logo.png" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4">
                 </div>
                 <div class="hidden md:block">
                     <p class="text-xl sm:text-3xl font-bold text-center" style="color: #173861;">Bienvenido a Tiendas
@@ -121,202 +127,28 @@
     </header>
 
     <main class="container mx-auto px-4 py-4 sm:py-8">
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <!-- Promoción 1 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo1.jpg" alt="Promoción 1"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(1)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 1</p>
-            </div>
-            <!-- Promoción 2 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo2.jpg" alt="Promoción 2"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(2)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 2</p>
-            </div>
-            <!-- Promoción 3 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo3.jpg" alt="Promoción 3"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(3)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 3</p>
-            </div>
-            <!-- Promoción 4 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo4.jpg" alt="Promoción 4"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(4)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 4</p>
-            </div>
-            <!-- Promoción 5 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo5.jpg" alt="Promoción 5"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(5)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 5</p>
-            </div>
-            <!-- Promoción 6 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo6.jpg" alt="Promoción 6"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(6)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 6</p>
-            </div>
-            <!-- Promoción 7 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo7.jpg" alt="Promoción 7"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(7)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 7</p>
-            </div>
-            <!-- Promoción 8 -->
-            <div class="bg-white p-2 sm:p-4 rounded-lg shadow-md">
-                <img src="./imagenes/promo8.jpg" alt="Promoción 8"
-                    class="w-full h-32 sm:h-48 object-cover mb-2 sm:mb-4 rounded cursor-pointer promo-image"
-                    onclick="openModal(8)">
-                <p class="text-xs sm:text-sm text-center font-semibold">Promoción 8</p>
-            </div>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-content">
+            
         </div>
     </main>
 
     <!-- Modales para cada promocion se debe repetir el codigo para cada promocion dependiendo las que se tengan -->
-    <div id="modal1" class="modal">
+    <div id="modal-promo" class="modal">
         <span class="close" onclick="closeModal(1)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/PROMO_02.jpg" alt="Promoción 1">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/PROMO_03.jpg" alt="Promoción 1">
-            </div>
+        <div class="modal-content" id="promos-content">
+            
             <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
         </div>
     </div>
-
-
-    <div id="modal2" class="modal">
-        <span class="close" onclick="closeModal(2)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
-        </div>
-    </div>
-
-    <div id="modal3" class="modal">
-        <span class="close" onclick="closeModal(3)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
-        </div>
-    </div>
-
-    <div id="modal4" class="modal">
-        <span class="close" onclick="closeModal(4)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 4)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 4)">&#10095;</a>
-        </div>
-    </div>
-
-    <div id="modal5" class="modal">
-        <span class="close" onclick="closeModal(5)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 5)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 5)">&#10095;</a>
-        </div>
-    </div>
-
-    <div id="modal6" class="modal">
-        <span class="close" onclick="closeModal(6)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 6)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 6)">&#10095;</a>
-        </div>
-    </div>
-
-    <div id="modal7" class="modal">
-        <span class="close" onclick="closeModal(7)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 7)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 7)">&#10095;</a>
-        </div>
-    </div>
-
-    <div id="modal8" class="modal">
-        <span class="close" onclick="closeModal(8)">&times;</span>
-        <div class="modal-content">
-            <div class="mySlides">
-                <img src="./imagenes/promo1.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo2.jpg" style="width:100%">
-            </div>
-            <div class="mySlides">
-                <img src="./imagenes/promo3.jpg" style="width:100%">
-            </div>
-            <a class="prev" onclick="plusSlides(-1, 8)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 8)">&#10095;</a>
-        </div>
-    </div>
-
     <script>
+        const gridsPromos = {"cerveza":"BOTON_001.jpg","refresco":"BOTON_002.jpg","agua":"BOTON_003.jpg","cigarro":"BOTON_004.jpg","kits":"BOTON_005.jpg","abarrotes":"BOTON_006.jpg"};
+        const gridContent = document.querySelector('#grid-content');
+        const slideContent = document.querySelector('#promos-content');
+        const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg"]};
+        let slideIndex = {};
+        let slideInterval = {};
+
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -324,16 +156,51 @@
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
             });
+            deployPromoGrids();
         });
 
-        let slideIndex = {};
-        let slideInterval = {};
+        function openModal(promotag) {
+            let promos = imagesPromos[promotag];
+            if (promos.length > 0) {
+                let next = document.createElement('a');
+                let prev = document.createElement('a');
+                slideContent.innerHTML ='';
+                promos.forEach(image => {
+                    var divC = document.createElement("div");
+                    let img = document.createElement("img");
+                    divC.classList.add("mySlides");
+                    img.classList.add("w-full");
+                    img.setAttribute("src",`./assets/images/${promotag}/${image}`);
+                    divC.append(img);
+                    slideContent.append(divC);
+                });
+                prev.classList.add("prev");
+                prev.setAttribute("onclick","plusSlides(-1, 1)");
+                prev.innerHTML = "&#10094;";
+                slideContent.append(prev);
+                next.classList.add("next");
+                next.setAttribute("onclick","plusSlides(1, 1)");
+                next.innerHTML = "&#10095;";
+                slideContent.append(next);
+                document.getElementById("modal-promo").style.display = "flex";
+                slideIndex[promotag] = 1;
+                showSlides(1, modalNum);
+                startSlideshow(promotag);
+            }
+        }
 
-        function openModal(modalNum) {
-            document.getElementById("modal" + modalNum).style.display = "flex";
-            slideIndex[modalNum] = 1;
-            showSlides(1, modalNum);
-            startSlideshow(modalNum);
+        function deployPromoGrids() {
+            gridsPromos.forEach((item,image) => {
+                var divC = document.createElement("div");
+                let img = document.createElement("img");
+                divC.classList.add("bg-grid","p-2","sm:p-4", "rounded-lg", "shadow-md","promo-grid");
+                img.classList.add("w-full","h-32", "sm:h-48", "object-cover", "rounded", "cursor-pointer","promo-image");
+                img.setAttribute("src","./assets/images/"+image);
+                img.setAttribute("onclick",`openModal(${item})`);
+                img.setAttribute("title",`Nuestras Promociones en ${item}`);
+                divC.append(img);
+                gridContent.append(divC);
+            });
         }
 
         function closeModal(modalNum) {
