@@ -142,7 +142,8 @@
         </div>
     </div>
     <script>
-        const gridsPromos = {cerveza:"BOTON_001.jpg",refresco:"BOTON_002.jpg",agua:"BOTON_003.jpg",cigarro:"BOTON_004.jpg",kits:"BOTON_005.jpg",abarrotes:"BOTON_006.jpg"};
+        var gridsPromos = {cerveza:"BOTON_001.jpg",refresco:"BOTON_002.jpg",agua:"BOTON_003.jpg",cigarro:"BOTON_004.jpg",kits:"BOTON_005.jpg",abarrotes:"BOTON_006.jpg"};
+        console.log(gridsPromos)
         const gridContent = document.querySelector('#grid-content');
         const slideContent = document.querySelector('#promos-content');
         const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg"]};
@@ -190,17 +191,17 @@
         }
 
         function deployPromoGrids() {
-            gridsPromos.forEach((item,image) => {
+            for (let clave in gridsPromos){
                 var divC = document.createElement("div");
                 let img = document.createElement("img");
                 divC.classList.add("bg-grid","p-2","sm:p-4", "rounded-lg", "shadow-md","promo-grid");
                 img.classList.add("w-full","h-32", "sm:h-48", "object-cover", "rounded", "cursor-pointer","promo-image");
-                img.setAttribute("src","./assets/images/"+image);
-                img.setAttribute("onclick",`openModal(${item})`);
-                img.setAttribute("title",`Nuestras Promociones en ${item}`);
+                img.setAttribute("src","./assets/images/grid-promos/"+gridsPromos[clave]);
+                img.setAttribute("onclick",`openModal(${clave})`);
+                img.setAttribute("title",`Nuestras Promociones en ${clave}`);
                 divC.append(img);
                 gridContent.append(divC);
-            });
+            }
         }
 
         function closeModal(modalNum) {
