@@ -15,13 +15,6 @@
                 display: block;
             }
         }
-        @media (max-width: 768px) {
-            .prev,
-            .next {
-                padding: 8px;
-                font-size: 16px;
-            }
-        }
         .modal {
             display: none;
             position: fixed;
@@ -51,54 +44,28 @@
             cursor: pointer;
             z-index: 1010;
         }
-        .mySlides {
-            display: none;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            align-items: center;
-        }
-        .mySlides img {
-            max-width: 100%;
-            max-height: 100vh;
-            object-fit: contain;
-        }
-        .prev,
-        .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: auto;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            -webkit-user-select: none;
-            z-index: 1010;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        .prev {
-            left: 0;
-        }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
         .bg-grid {
-            background-color: rgb(60, 125, 206);
+            background-color: rgb(73 154 255);
         }
-        .promo-grid :hover {
-            background-color: aqua;
+        .bg-grid:hover {
+            background-color: #00356c;
+        }
+
+        /* CSS Code */
+        .swiper-wrapper {
+            width: 100%;
+            height: max-content !important;
+            padding-bottom: 64px !important;
+            -webkit-transition-timing-function: linear !important;
+            transition-timing-function: linear !important;
+            position: relative;
+        }
+        .swiper-pagination-bullet {
+            background: #4f46e5;
         }
     </style>
+    <link href="assets/css/swiper-bundle.min.css" rel="stylesheet"/>
+    <script src="assets/js/swiper-bundle.min.js"></script>
 </head>
 <body class="bg-gray-100">
     <header class="bg-white shadow-md">
@@ -132,18 +99,52 @@
         </div>
     </main>
 
-    <!-- Modales para cada promocion se debe repetir el codigo para cada promocion dependiendo las que se tengan -->
+    <!-- NUEVO MODAL PROMOCIONAL -->
     <div id="modal-promo" class="modal">
-        <span class="close" onclick="closeModal(1)">&times;</span>
-        <div class="modal-content" id="promos-content">
-            
-            <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="w-full relative">
+                <div class="swiper default-carousel swiper-container">
+                    <div class="swiper-wrapper" id="promos-content">
+                        <div class="swiper-slide">
+                            <div class="flex justify-center items-center">
+                                <img src="https://arturok2.github.io/promos/assets/images/promos/PROMO_002.jpg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="flex justify-center items-center">
+                                <img src="https://arturok2.github.io/promos/assets/images/promos/PROMO_003.jpg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="flex justify-center items-center">
+                                <img src="https://arturok2.github.io/promos/assets/images/promos/PROMO_004.jpg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-8 lg:justify-start justify-center">
+                        <button id="slider-button-left" class="swiper-button-prev group !p-2 flex justify-center items-center !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8 !left-5" data-carousel-prev>
+                            <svg class="h-5 w-5 text-indigo-600 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M10.0002 11.9999L6 7.99971L10.0025 3.99719" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="slider-button-right" class="swiper-button-next group !p-2 flex justify-center items-center !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8  !right-5" data-carousel-next>
+                            <svg class="h-5 w-5 text-indigo-600 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M5.99984 4.00012L10 8.00029L5.99748 12.0028" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        
         </div>
     </div>
+
+    <!--JAVASCRIPT CODE-->
+
     <script>
         var gridsPromos = {cerveza:"BOTON_001.jpg",refresco:"BOTON_002.jpg",agua:"BOTON_003.jpg",cigarro:"BOTON_004.jpg",kits:"BOTON_005.jpg",abarrotes:"BOTON_006.jpg"};
-        console.log(gridsPromos)
         const gridContent = document.querySelector('#grid-content');
         const slideContent = document.querySelector('#promos-content');
         const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg"]};
@@ -163,30 +164,20 @@
         function openModal(promotag) {
             let promos = imagesPromos[promotag];
             if (promos.length > 0) {
-                let next = document.createElement('a');
-                let prev = document.createElement('a');
                 slideContent.innerHTML ='';
                 promos.forEach(image => {
-                    var divC = document.createElement("div");
+                    let divC = document.createElement("div");
+                    let divI = document.createElement("div");
                     let img = document.createElement("img");
-                    divC.classList.add("mySlides");
-                    img.classList.add("w-full");
-                    img.setAttribute("src",`./assets/images/${promotag}/${image}`);
-                    divC.append(img);
+                    divC.classList.add("swiper-slide");
+                    divI.classList.add("flex", "justify-center", "items-center");
+                    img.setAttribute("src",`./assets/images/promos/${promotag}/${image}`);
+                    divI.append(img);
+                    divC.append(divI);
                     slideContent.append(divC);
                 });
-                prev.classList.add("prev");
-                prev.setAttribute("onclick","plusSlides(-1, 1)");
-                prev.innerHTML = "&#10094;";
-                slideContent.append(prev);
-                next.classList.add("next");
-                next.setAttribute("onclick","plusSlides(1, 1)");
-                next.innerHTML = "&#10095;";
-                slideContent.append(next);
-                document.getElementById("modal-promo").style.display = "flex";
-                slideIndex[promotag] = 1;
-                showSlides(1, modalNum);
-                startSlideshow(promotag);
+                showModal();
+                initScriptCarousel();
             }
         }
 
@@ -194,52 +185,40 @@
             for (let clave in gridsPromos){
                 var divC = document.createElement("div");
                 let img = document.createElement("img");
-                divC.classList.add("bg-grid","p-2","sm:p-4", "rounded-lg", "shadow-md","promo-grid");
+                divC.classList.add("bg-grid","p-2","sm:p-4", "rounded-lg", "shadow-md");
                 img.classList.add("w-full","h-32", "sm:h-48", "object-cover", "rounded", "cursor-pointer","promo-image");
                 img.setAttribute("src","./assets/images/grid-promos/"+gridsPromos[clave]);
-                img.setAttribute("onclick",`openModal(${clave})`);
+                img.setAttribute("onclick",`openModal("${clave}")`);
                 img.setAttribute("title",`Nuestras Promociones en ${clave}`);
                 divC.append(img);
                 gridContent.append(divC);
             }
         }
 
-        function closeModal(modalNum) {
-            document.getElementById("modal" + modalNum).style.display = "none";
-            stopSlideshow(modalNum);
+        function initScriptCarousel() {
+            var swiper = new Swiper(".default-carousel", {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                },
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+            });
         }
 
-        function plusSlides(n, modalNum) {
-            stopSlideshow(modalNum);
-            showSlides(slideIndex[modalNum] += n, modalNum);
+        function closeModal() {
+            document.getElementById("modal-promo").style.display = "none";
         }
 
-        function showSlides(n, modalNum) {
-            let slides = document.getElementById("modal" + modalNum).getElementsByClassName("mySlides");
-            if (n > slides.length) { slideIndex[modalNum] = 1 }
-            if (n < 1) { slideIndex[modalNum] = slides.length }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex[modalNum] - 1].style.display = "flex";
-        }
-
-        function startSlideshow(modalNum) {
-            slideInterval[modalNum] = setInterval(function () {
-                plusSlides(1, modalNum);
-            }, 3000); // Cambia la imagen cada 3 segundos
-        }
-
-        function stopSlideshow(modalNum) {
-            clearInterval(slideInterval[modalNum]);
-        }
-
-        // Cierra el modal si el usuario hace clic fuera de él
-        window.onclick = function (event) {
-            if (event.target.classList.contains('modal')) {
-                let modalNum = event.target.id.replace('modal', '');
-                closeModal(modalNum);
-            }
+        function showModal() {
+            document.getElementById("modal-promo").style.display = "flex";
         }
     </script>
 </body>
