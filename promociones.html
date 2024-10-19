@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promociones Mode</title>
+    <title>MODE - Siempre Precios Bajos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -50,6 +50,12 @@
         .bg-grid:hover {
             background-color: #00356c;
         }
+        .blue-mode {
+            color: rgb(23 56 97);
+        }
+        .text-blue-b {
+            color: rgb(0 70 225);
+        }
 
         /* CSS Code */
         .swiper-wrapper {
@@ -63,12 +69,7 @@
         .swiper-pagination-bullet {
             background: #4f46e5;
         }
-        .blue-mode {
-            color: rgb(23 56 97);
-        }
-        .text-blue-b {
-            color: rgb(0 70 225);
-        }
+       
     </style>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -78,16 +79,13 @@
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="./assets/images/logo.png" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4 redirtohome">
+                    <img src="./assets/images/logo.png" title="Ya nos conoces! Siempre Precios Bajos" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4 redirtohome">
                 </div>
                 <div class="hidden md:block">
                     <p class="text-xl sm:text-3xl font-bold text-center" style="color: #173861;">Bienvenido a Tiendas
                         Mode</p>
                 </div>
-                <div class="hidden md:flex items-center">
-                    <a href="index.html" class="text-gray-800 hover:text-blue-600 mx-3">Inicio</a>
-                </div>
-                <div class="md:hidden">
+                <div>
                     <button id="mobile-menu-button" class="blue-mode hover:text-blue-b redirtohome" onclick="window.location.replace('index.html')">
                         <i class="fa-solid fa-house-chimney text-3xl" title="Ver Nuestra Página Principal"></i>
                     </button>
