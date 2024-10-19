@@ -63,6 +63,12 @@
         .swiper-pagination-bullet {
             background: #4f46e5;
         }
+        .blue-mode {
+            color: rgb(23 56 97);
+        }
+        .text-blue-b {
+            color: rgb(0 70 225);
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -72,7 +78,7 @@
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="./assets/images/logo.png" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4">
+                    <img src="./assets/images/logo.png" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4 redirtohome">
                 </div>
                 <div class="hidden md:block">
                     <p class="text-xl sm:text-3xl font-bold text-center" style="color: #173861;">Bienvenido a Tiendas
@@ -82,20 +88,16 @@
                     <a href="index.html" class="text-gray-800 hover:text-blue-600 mx-3">Inicio</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600">
-                        <i class="fas fa-bars"></i>
+                    <button id="mobile-menu-button" class="blue-mode hover:text-blue-b redirtohome" onclick="window.location.replace('index.html')">
+                        <i class="fa-solid fa-house-chimney text-3xl" title="Ver Nuestra Página Principal"></i>
                     </button>
                 </div>
-            </div>
-            <div id="mobile-menu" class="mobile-menu mt-4 md:hidden">
-                <a href="index.html" class="block text-gray-800 hover:text-blue-600 py-2">Inicio</a>
             </div>
         </nav>
     </header>
 
     <main class="container mx-auto px-4 py-4 sm:py-8">
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-content">
-            
         </div>
     </main>
 
@@ -137,27 +139,22 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-        
         </div>
     </div>
 
     <!--JAVASCRIPT CODE-->
-
     <script>
         var gridsPromos = {cerveza:"BOTON_001.jpg",refresco:"BOTON_002.jpg",agua:"BOTON_003.jpg",cigarro:"BOTON_004.jpg",kits:"BOTON_005.jpg",abarrotes:"BOTON_006.jpg"};
+        const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg","PROMO_003.jpg","PROMO_004.jpg","PROMO_005.jpg"]};
         const gridContent = document.querySelector('#grid-content');
         const slideContent = document.querySelector('#promos-content');
-        const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg"]};
-        let slideIndex = {};
-        let slideInterval = {};
+        const redirtohome = document.querySelector('.redirtohome');
 
         document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
+            redirtohome.addEventListener('click', () => {
+                location.href="index.html";
             });
+
             deployPromoGrids();
         });
 
