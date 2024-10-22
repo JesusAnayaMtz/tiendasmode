@@ -10,12 +10,65 @@
     <title>MODE - Siempre Precios Bajos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+
     <style>
+
+    /* Inicia seccion de style para el carrusel de productos */
+    .product-swiper {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 1rem;
+    }
+    
+    .product-swiper .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+    
+    .product-swiper .swiper-pagination-bullet {
+        background: #173861;
+    }
+    
+    .product-swiper .swiper-button-next,
+    .product-swiper .swiper-button-prev {
+        color: #173861;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 1rem;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .product-swiper .swiper-button-next:after,
+    .product-swiper .swiper-button-prev:after {
+        font-size: 1rem;
+    }
+    
+    .product-card {
+        background: #f8f9fa;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /*Finaliza seccion de carrusel de productos*/
+
+
+    /*Inicia Carrusel Inicial*/
        .carousel {
             overflow: hidden;
             position: relative;
             width: 100%;
-            padding-top: 30%; /* Relación de aspecto 16:9 */
+            padding-top: 25%; /* Relación de aspecto 16:9 */
         }
         p {
             color: #173861;
@@ -61,6 +114,9 @@
         .bg-gradient {
             background: linear-gradient(135deg, #797ca4 0%, #081633 100%);
         }
+        /*finaliza style de carrusel inicial*/
+        
+
         .text-shadow {
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
@@ -126,14 +182,8 @@
     </header>
 
     <main>
-        <section class="py-8">
-        <div class="flex justify-center mb-8">
-            <img src="./assets/images/modebanner.jpg" alt="Mode Banner" class="max-w-full h-auto">
-        </div>
-        </section>
         <section class="bg-gradient py-8">
             <div class="container mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-12 text-white text-shadow">Descubre Nuestras Ùltimas Promociones</h2>
                 <div class="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item">
@@ -148,29 +198,101 @@
                 </div>
             </div>
         </section>
+
         <section id="productos" class="bg-white py-8">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Nuestros Productos</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                        <img src="./assets/images/corona.jpg" alt="Producto 1"
-                            class="w-full h-80 object-cover mb-4 rounded">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Producto 1: Cervezas y Licores -->
+                    <div class="product-card p-4">
+                        <div class="swiper product-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/corona.jpg" alt="Corona">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/victoria.jpg" alt="Victoria">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/modelo.jpg" alt="Modelo">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                         <h3 class="text-xl text-center font-semibold mb-2">Cervezas y Licores</h3>
-                        <p class="text-gray-600 text-center">De la mejor compañia cervecera ABInBev, tenemos para ti Corona, Victoria, Modelo Especial, Negra Modelo en sus
-                        diferentes presentaciones. Ademas una diversa gama de licores para cualquier gusto.</p>
+                        <p class="text-gray-600 text-center">De la mejor compañia cervecera ABInBev, tenemos para ti Corona,
+                            Victoria, Modelo Especial, Negra Modelo en sus diferentes presentaciones.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                        <img src="./assets/images/refrescos.jpg" alt="Producto 2"
-                            class="w-full h-80 object-cover mb-4 rounded">
+        
+                    <!-- Producto 2: Aguas y Refrescos -->
+                    <div class="product-card p-4">
+                        <div class="swiper product-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/refrescos.jpg" alt="Refrescos">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/coca-cola.jpg" alt="Coca Cola">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/agua.jpg" alt="Agua">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                         <h3 class="text-xl text-center font-semibold mb-2">Aguas Y Refrescos</h3>
-                        <p class="text-gray-600 text-center">Agua de las marcas E-Pura, Nestle, Ciel, etc; asi como tambien refrescos Coca-Cola, Pepsi-Cola, Garci-Crespo entre
-                        otros.</p>
+                        <p class="text-gray-600 text-center">Agua de las marcas E-Pura, Nestle, Ciel, asi como tambien refrescos
+                            Coca-Cola, Pepsi-Cola, Garci-Crespo entre otros.</p>
                     </div>
-                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
-                        <img src="./assets/images/galletas.jpg" alt="Producto 3"
-                            class="w-full h-80 object-cover mb-4 rounded">
+        
+                    <!-- Producto 3: Dulces y Botanas -->
+                    <div class="product-card p-4">
+                        <div class="swiper product-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/galletas.jpg" alt="Galletas">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/sabritas.jpg" alt="Sabritas">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/dulces.jpg" alt="Dulces">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                         <h3 class="text-xl text-center font-semibold mb-2">Dulces Y Botanas</h3>
-                        <p class="text-gray-600 text-center">Dulces y Botanas de Sabritas, Barcel, Gamesa, Marinela, Bimbo entre otros.</p>
+                        <p class="text-gray-600 text-center">Dulces y Botanas de Sabritas, Barcel, Gamesa, Marinela, Bimbo entre
+                            otros.</p>
+                    </div>
+        
+                    <!-- Producto 4: Nuevo - Abarrotes -->
+                    <div class="product-card p-4">
+                        <div class="swiper product-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/abarrotes.jpg" alt="Abarrotes">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/despensa.jpg" alt="Despensa">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="./assets/images/productos.jpg" alt="Productos">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <h3 class="text-xl text-center font-semibold mb-2">Abarrotes</h3>
+                        <p class="text-gray-600 text-center">Gran variedad de productos básicos para tu despensa, incluyendo
+                            alimentos enlatados, granos, aceites y más.</p>
                     </div>
                 </div>
             </div>
@@ -303,6 +425,33 @@
             const nextBtn = document.querySelector('.carousel-control-next');
             let currentIndex = 0;
             let interval;
+
+            //Constante para el carrusel de productos
+            const productSwipers = document.querySelectorAll('.product-swiper');
+
+            productSwipers.forEach(element => {
+                new Swiper(element, {
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: element.querySelector('.swiper-pagination'),
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: element.querySelector('.swiper-button-next'),
+                        prevEl: element.querySelector('.swiper-button-prev'),
+                    },
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                });
+            });
+
+            
 
             window.addEventListener('scroll', function () {
                 // Mostrar el botón cuando se ha hecho scroll hacia abajo (más de 100px)
