@@ -146,18 +146,40 @@
     <main>
         <section class="bg-gradient py-3">
             <div class="container mx-auto">
-                <div class="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item">
-                            <img src="./assets/images/promo1.jpg" alt="Promo 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./assets/images/promo2.jpg" alt="Promo 2">
-                        </div>
-                    </div>
-                    <button class="carousel-control carousel-control-prev">&lt;</button>
-                    <button class="carousel-control carousel-control-next">&gt;</button>
-                </div>
+                <swiper-container class="mySwiper main-carousel" autoplay="true" pagination="true" pagination-clickable="true" space-between="30" effect="fade" >
+                    <swiper-slide>
+                       <picture>
+                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-1.jpg 2x">
+                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-1m.jpg 2x">
+                            <img src="assets/images/main-banner/banner-1.jpg alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
+                        </picture>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <picture>
+                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-2.jpg 2x">
+                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-2m.jpg 2x">
+                            <img src="assets/images/main-banner/banner-2.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
+                        </picture>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <picture>
+                            <picture>
+                                <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-3.jpg 2x">
+                                <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-3m.jpg 2x">
+                                <img src="assets/images/main-banner/banner-3.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
+                            </picture>
+                        </picture>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <picture>
+                            <picture>
+                                <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-4.jpg 2x">
+                                <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-4m.jpg 2x">
+                                <img src="assets/images/main-banner/banner-4.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
+                            </picture>
+                        </picture>
+                    </swiper-slide>
+                </swiper-container>
             </div>
         </section>
 
