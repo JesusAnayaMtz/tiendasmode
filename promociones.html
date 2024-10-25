@@ -18,7 +18,11 @@
             .mobile-menu.active {
                 display: block;
             }
+            #promos-content {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) ;
+            }
         }
+       
         .modal {
             display: none;
             position: fixed;
@@ -73,6 +77,9 @@
         .swiper-pagination-bullet {
             background: #4f46e5;
         }
+        .rounded-s1 {
+            border-radius: 2rem 2rem 0rem 0rem;
+        }
        
     </style>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
@@ -101,57 +108,37 @@
     <main class="container mx-auto px-4 py-4 sm:py-8">
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="grid-content">
         </div>
+
+        <div class="section">
+            <div class="grid grid-cols-5 md:grid-cols-5 sm:grid-cols-2 grid-auto-columns-1/3 h-full py-2" id="ent">
+
+            </div>
+        </div>
+        
     </main>
 
     <!-- NUEVO MODAL PROMOCIONAL -->
     <div id="modal-promo" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="w-full relative">
-                <div class="swiper default-carousel swiper-container">
-                    <div class="swiper-wrapper" id="promos-content">
-                        <div class="swiper-slide">
-                            <div class="flex justify-center items-center">
-                                <img src="https://arturok2.github.io/promos/assets/images/promos/PROMO_002.jpg">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="flex justify-center items-center">
-                                <img src="https://arturok2.github.io/promos/assets/images/promos/PROMO_003.jpg">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="flex justify-center items-center">
-                                <img src="https://arturok2.github.io/promos/assets/images/promos/PROMO_004.jpg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-8 lg:justify-start justify-center">
-                        <button id="slider-button-left" class="swiper-button-prev group !p-2 flex justify-center items-center !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8 !left-5" data-carousel-prev>
-                            <svg class="h-5 w-5 text-indigo-600 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M10.0002 11.9999L6 7.99971L10.0025 3.99719" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <button id="slider-button-right" class="swiper-button-next group !p-2 flex justify-center items-center !w-12 !h-12 transition-all duration-500 rounded-full !top-2/4 !-translate-y-8  !right-5" data-carousel-next>
-                            <svg class="h-5 w-5 text-indigo-600 group-hover:text-white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M5.99984 4.00012L10 8.00029L5.99748 12.0028" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="swiper-pagination"></div>
+        <div class="modal-content content overflow-scroll">
+            <div class="section h-full mt-8">
+                <div class="grid grid-cols-6 md:grid-cols-6 sm:grid-cols-2 grid-auto-columns-1/3 py-6" id="promos-content">
+
                 </div>
             </div>
+            
         </div>
     </div>
 
     <!--JAVASCRIPT CODE-->
     <script>
         var gridsPromos = {cerveza:"BOTON_001.jpg",refresco:"BOTON_002.jpg",agua:"BOTON_003.jpg",cigarro:"BOTON_004.jpg",kits:"BOTON_005.jpg",abarrotes:"BOTON_006.jpg"};
-        const imagesPromos = {"cerveza":["PROMO_001.jpg","PROMO_002.jpg","PROMO_003.jpg","PROMO_004.jpg","PROMO_005.jpg"]};
+        const imagesPromos = {"cerveza":["item-01.jpg","item-02.jpg","item-03.jpg","item-04.jpg","item-05.jpg","item-06.jpg","item-07.jpg","item-08.jpg"]};
         const gridContent = document.querySelector('#grid-content');
         const slideContent = document.querySelector('#promos-content');
         const redirtohome = document.querySelector('.redirtohome');
 
+  
         document.addEventListener('DOMContentLoaded', function () {
             redirtohome.addEventListener('click', () => {
                 location.href="index.html";
@@ -161,22 +148,22 @@
         });
 
         function openModal(promotag) {
-            let promos = imagesPromos[promotag];
+            let promos = imagesPromos[promotag]; //"rounded-s1"
             if (promos.length > 0) {
                 slideContent.innerHTML ='';
                 promos.forEach(image => {
-                    let divC = document.createElement("div");
-                    let divI = document.createElement("div");
                     let img = document.createElement("img");
-                    divC.classList.add("swiper-slide");
-                    divI.classList.add("flex", "justify-center", "items-center");
+                    let divC = document.createElement("div");
+                    img.classList.add("w-full","rounded-lg","object-cover" ); 
+                    
+                    divC.classList.add("relative","m-3","shadow-lg");
                     img.setAttribute("src",`./assets/images/promos/${promotag}/${image}`);
-                    divI.append(img);
-                    divC.append(divI);
+                    img.setAttribute("width","275");
+                    divC.append(img);
                     slideContent.append(divC);
                 });
                 showModal();
-                initScriptCarousel();
+
             }
         }
 
