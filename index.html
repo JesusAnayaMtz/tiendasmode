@@ -401,9 +401,8 @@
             </div>
         </div>
     </footer>
-    <button id="backToTop"
-        class="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none transition-all duration-300 opacity-0 invisible">
-        <i class="fas fa-arrow-up"></i>
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up" title="Ir arriba"></i>
     </button>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -442,6 +441,23 @@
 
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
+            });
+
+            window.addEventListener('scroll', function () {
+                // Mostrar el botón cuando se ha hecho scroll hacia abajo (más de 100px)
+                if (window.scrollY > 80) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            // Animar el scroll hacia el inicio
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
