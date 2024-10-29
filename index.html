@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-
     <style>
         /* para el carrusel principal */
         swiper-container {
@@ -105,11 +104,12 @@
                 display: block;
             }
         }
-       
         .styleimgitem {
             border-radius: 1rem;
-            /* border-style: solid;
-            border-color: black; */
+        }
+        .item-menu:hover {
+            border-bottom: 1px solid #80b8ff;
+            color: rgb(0 76 172);
         }
     </style>
 </head>
@@ -118,17 +118,17 @@
         <nav class="container mx-auto px-8 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="./assets/images/logo.png" alt="ModelHogar Logo" title="Ya nos conoces! Siempre Precios Bajos" class="h-11 mr-4">
+                    <img src="./assets/images/logo.png" alt="Tiendas MODE Logo" title="Ya nos conoces! Siempre Precios Bajos" class="h-11 mr-4">
                 </div>
                 <div class="hidden md:block">
-                    <p class=" text-3xl font-bold text-center ">Bienvenido a Tiendas Mode</p>
+                    <p class=" text-3xl font-bold text-center ">Bienvenido a Tiendas MODE</p>
                 </div>
-                <div class="hidden md:flex items-center">
-                    <a href="#" class="text-gray-800 hover:text-blue-600 mx-3">Inicio</a>
-                    <a href="#productos" class="text-gray-800 hover:text-blue-600 mx-3">Nuestros Productos</a>
-                    <a href="promociones.html" class="text-gray-800 hover:text-blue-600 mx-3">Promociones</a>
-                    <a href="#nosotros" class="text-gray-800 hover:text-blue-600 mx-3">Nosotros</a>
-                    <a href="#contacto" class="text-gray-800 hover:text-blue-600 mx-3">Contacto</a>
+                <div class="hidden md:flex items-center font-medium">
+                    <a href="#" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Inicio</a>
+                    <a href="#productos" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Nuestros Productos</a>
+                    <a href="promociones.html" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Promociones</a>
+                    <a href="#nosotros" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Nosotros</a>
+                    <a href="#contacto" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Contacto</a>
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600">
@@ -145,46 +145,10 @@
             </div>
         </nav>
     </header>
-
     <main>
         <section class="bg-gradient py-3">
             <div class="container mx-auto">
-                <swiper-container class="mySwiper main-carousel" autoplay="true" pagination="true" pagination-clickable="true" space-between="30" effect="fade" >
-                    <swiper-slide>
-                       <picture>
-                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-1.jpg 2x">
-                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-1m.jpg 2x">
-                            <img src="assets/images/main-banner/banner-1.jpg alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
-                        </picture>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <picture>
-                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-2.jpg 2x">
-                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-2m.jpg 2x">
-                            <img src="assets/images/main-banner/banner-2.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
-                        </picture>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <picture>
-                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-3.jpg 2x">
-                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-3m.jpg 2x">
-                            <img src="assets/images/main-banner/banner-3.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
-                        </picture>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <picture>
-                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-4.jpg 2x">
-                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-4m.jpg 2x">
-                            <img src="assets/images/main-banner/banner-4.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
-                        </picture>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <picture>
-                            <source media="(min-width: 641px)" srcset="assets/images/main-banner/banner-5.jpg 2x">
-                            <source media="(max-width: 640px)" srcset="assets/images/main-banner/banner-5m.jpg 2x">
-                            <img src="assets/images/main-banner/banner-5.jpg" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
-                        </picture>
-                    </swiper-slide>
+                <swiper-container class="mySwiper main-carousel" autoplay="true" pagination="true" pagination-clickable="true" space-between="30" effect="fade" id="main-banner">
                 </swiper-container>
             </div>
         </section>
@@ -193,11 +157,10 @@
                 <picture>
                     <source media="(min-width: 641px)" srcset="assets/images/banderilla-blue.png 2x">
                     <source media="(max-width: 640px)" srcset="assets/images/banderilla-blue-m.png 2x">
-                    <img src="assets/images/banderilla-blue.png" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem">
+                    <img src="assets/images/banderilla-blue.png" alt="Hersheys-Pos1-P11-2024-Promociones" title="MODE Promociones 2024" class="styleimgitem w-full">
                 </picture>
             </div>
         </section>
-
         <section id="productos" class="bg-white py-8">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Nuestros Productos</h2>
@@ -296,7 +259,6 @@
                 </div>
             </div>
         </section>
-
         <section id="nosotros" class="bg-gradient py-8">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-8 text-white text-shadow">Nosotros</h2>
@@ -320,7 +282,6 @@
                 </div>
             </div>
         </section>
-
         <section id="contacto" class="bg-gray-100 py-8">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Contacto</h2>
@@ -379,7 +340,7 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-wrap justify-between">
                 <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-3">Tiendas Mode</h3>
+                    <h3 class="text-xl font-bold mb-3">Tiendas MODE</h3>
                     <p class="text-white">Siempre Precios Bajos</p>
                 </div>
                 <div class="w-full md:w-1/4 mb-6 md:mb-0">
@@ -407,7 +368,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
-                <p class="text-white">&copy; 2024 Tiendas Mode. Todos los derechos reservados.</p>
+                <p class="text-white">&copy; 2024 Tiendas MODE. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -417,8 +378,31 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const backToTopButton = document.getElementById('backToTop');
+            const mainCarousel = document.getElementById('main-banner');
+            const imagesPromos = new Array(["banner-1.jpg","banner-1m.jpg"],["banner-2.jpg","banner-2m.jpg"],["banner-3.jpg","banner-3m.jpg"],["banner-4.jpg","banner-4m.jpg"],["banner-5.jpg","banner-5m.jpg"]);
             let currentIndex = 0;
             let interval;
+
+            mainCarousel.innerHTML = "";
+            imagesPromos.forEach(element => {
+                let swiplide = document.createElement("swiper-slide");
+                let pic = document.createElement("picture");
+                let source1 = document.createElement("source");
+                let source2 = document.createElement("source");
+                let img = document.createElement("img");
+                source1.setAttribute("media","(min-width: 641px)");
+                source1.setAttribute("srcset",`assets/images/main-banner/${element[0]} 2x`);
+                source2.setAttribute("media","(max-width: 640px)");
+                source2.setAttribute("srcset",`assets/images/main-banner/${element[1]} 2x`);
+                img.setAttribute("src",`assets/images/main-banner/${element[0]} 2x`);
+                img.setAttribute("class","styleimgitem");
+                img.setAttribute("title","MODE Promociones 2024");
+                pic.append(source1);
+                pic.append(source2);
+                pic.append(img);
+                swiplide.append(pic);
+                mainCarousel.append(swiplide);
+            });
 
             //Constante para el carrusel de productos
             const productSwipers = document.querySelectorAll('.product-swiper');
