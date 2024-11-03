@@ -287,30 +287,27 @@
                 <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Contacto</h2>
                 <div class="flex flex-wrap -mx-4">
                     <!-- Formulario de contacto -->
-                    <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-                        <form class="bg-white rounded-lg shadow-xl p-8">
+                    <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0 mx-auto">
+                        <form id="contactForm" class="bg-white rounded-lg shadow-xl p-8">
+                            <!-- Selector de tipo de formulario -->
                             <div class="mb-4">
-                                <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                                <input type="text" id="nombre" name="nombre"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    required>
+                                <label class="block text-gray-700 text-sm font-bold mb-2">
+                                    Tipo de Contacto
+                                </label>
+                                <select id="tipoContacto"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="sugerencia">Sugerencia</option>
+                                    <option value="queja">Queja</option>
+                                </select>
                             </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                                <input type="email" id="email" name="email"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    required>
-                            </div>
-                            <div class="mb-6">
-                                <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje</label>
-                                <textarea id="mensaje" name="mensaje" rows="4"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    required></textarea>
-                            </div>
+                    
+                            <!-- Contenedor para el formulario dinámico -->
+                            <div id="formularioDinamico"></div>
+                    
                             <div class="flex items-center justify-center">
                                 <button type="submit"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                    Enviar Mensaje
+                                    Enviar
                                 </button>
                             </div>
                         </form>
@@ -454,6 +451,126 @@
                 });
             });
         });
+
+        
+
+    // Texto de prueba para tiendas
+        const tiendas = [
+            'MT La Once - Av 11, C. 12. ',
+            'MT San Jose - Av 9, C. 10',
+            'MT Bella Vista - Av 13, C 6',
+            'MT Alameda - Av 11, C. 2',
+        ];
+
+        // Platilla del formulario para quejas
+        const formularioQuejas = `
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Tienda
+                </label>
+                <select name="tienda" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    <option value="">Seleccione una tienda</option>
+                    ${tiendas.map(tienda => `<option value="${tienda}">${tienda}</option>`).join('')}
+                </select>
+            </div>
+
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Fecha del Suceso
+                </label>
+                <input type="date" name="fecha" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Hora del Suceso
+                </label>
+                <input type="time" name="hora" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Nombre Completo
+                </label>
+                <input type="text" name="nombreCompleto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Teléfono
+                </label>
+                <input type="tel" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+
+
+
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Descripción de la Queja
+                </label>
+                <textarea name="descripcion" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+            </div>
+        `;
+
+        // Plantilla del formulario de sugerencias
+        const formularioSugerencias = `
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Nombre
+                </label>
+                <input type="text" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Email
+                </label>
+                <input type="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">
+                    Sugerencia
+                </label>
+                <textarea name="sugerencia" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+            </div>
+        `;
+
+        // Función para actualizar el formulario segun sea la queja o sugerencia seleccionada por el cliente
+        function actualizarFormulario() {
+            const tipoContacto = document.getElementById('tipoContacto').value;
+            const formularioDinamico = document.getElementById('formularioDinamico');
+
+            formularioDinamico.innerHTML = tipoContacto === 'queja' ? formularioQuejas : formularioSugerencias;
+        }
+
+        // Función para el envio del formulario
+        function manejarEnvio(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const datos = Object.fromEntries(formData.entries());
+
+            // Aqui se agregara la logica para enviar el formulario
+            console.log('Datos del formulario:', datos);
+
+            // Se colocara un alert para que muestre los datos que envio el cliente
+            alert('Formulario enviado con éxito!\n\n' + JSON.stringify(datos, null, 2));
+
+            // reset del formulario
+            event.target.reset();
+        }
+
+        // Eventos para el manejo del formulario
+        document.getElementById('tipoContacto').addEventListener('change', actualizarFormulario);
+        document.getElementById('contactForm').addEventListener('submit', manejarEnvio);
+
+        // Inicializar el formulario
+        actualizarFormulario();
+    </script>
     </script>
 </body>
 </html>
