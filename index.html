@@ -364,6 +364,9 @@
                     
                             <!-- Contenedor para el formulario dinámico -->
                             <div id="formularioDinamico"></div>
+
+                            <!-- //------------------- -->
+                            
                     
                             <div class="flex items-center justify-center">
                                 <button type="submit"
@@ -409,6 +412,7 @@
                         <li><a href="promociones.html" class="hover:text-blue-400">Promociones</a></li>
                         <li><a href="#nosotros" class="hover:text-blue-400">Nosotros</a></li>
                         <li><a href="#contacto" class="hover:text-blue-400">Contacto</a></li>
+                        <li><a href="aviso-privacidad-clientes.html" class="hover:text-blue-400">Aviso de Privacidad</a></li>
                     </ul>
                 </div>
                 <div class="w-full md:w-1/4 mb-6 md:mb-0">
@@ -433,6 +437,12 @@
     <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none transition-all duration-300 opacity-0 invisible">
         <i class="fas fa-arrow-up" title="Ir arriba"></i>
     </button>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> -->
+    <script src="assets/js/flowbite.min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/locales/es.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script> -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const backToTopButton = document.getElementById('backToTop');
@@ -549,14 +559,17 @@
             </div>
             <div class="mb-4">
                 <label for="fecha-rep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha del suceso</label>
+
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                         </svg>
                     </div>
-                    <input type="date" id="fecha-rep" name="fecha-rep" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    <input datepicker id="fecha-rep" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
                 </div>
+
+               
             </div>
             <div class="mb-4">
                 <label for="hora-rep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora del suceso</label>
@@ -635,6 +648,18 @@
             const formularioDinamico = document.getElementById('formularioDinamico');
 
             formularioDinamico.innerHTML = tipoContacto === 'queja' ? formularioQuejas : formularioSugerencias;
+
+            if (tipoContacto === 'queja') {
+                const datepickerEl = document.getElementById('fecha-rep');
+ 
+      
+                new Datepicker(datepickerEl, {
+                    format: 'dd/mm/yyyy',
+                });
+
+               
+            }
+            
         }
 
         // Función para el envio del formulario

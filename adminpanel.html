@@ -10,9 +10,7 @@
     <title>MODE - Siempre Precios Bajos</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
     <style>
         /* para el carrusel principal */
         swiper-container {
@@ -144,8 +142,35 @@
             -webkit-padding-start: 2.5rem;
             padding-inline-start: 2.5rem;
         }
+        @media (min-width: 768px) {
+            .md\:me-4 {
+                -webkit-margin-end: 1rem;
+                margin-inline-end: 1rem;
+            }
+        }
+        .me-3 {
+            -webkit-margin-end: .3rem;
+            margin-inline-end: .3rem;
+        }
+        .bg-red-mode {
+            --tw-bg-opacity: 1;
+            background-color: rgb(166 43 43);
+        }
+        .-topend-2 {
+            top: -.2rem;
+            inset-inline-end: -.2rem;
+        }
+        .ease-in-out {
+            transition-timing-function: cubic-bezier(.4,0,.2,1);
+        }
+        .duration-150 {
+            transition-duration: .15s;
+        }
+        .w-m27 {
+            width: 27rem;
+        }
     </style>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"  rel="stylesheet" />
 </head>
 <body class="bg-gray-100">
     <header class="bg-white shadow-md">
@@ -178,7 +203,133 @@
     <main>
         <section class="bg-gradient py-3">
             <div class="container mx-auto">
-                
+                <h1 class="text-xl font-bold text-white mb-3">Panel de administración</h1>
+                <div class="md:flex">
+                    <ul class="flex-column space-y space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
+                        <li>
+                            <a href="#" class="inline-flex items-center px-4 py-3 text-white bg-red-mode rounded-lg active w-full dark:bg-blue-600" aria-current="page">
+                                <svg class="w-5 h-5 me-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M15 4H9v16h6V4Zm2 16h3a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3v16ZM4 4h3v16H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" clip-rule="evenodd"/>
+                                </svg>
+                                Main-Banner
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                                <svg class="w-5 h-5 me-3 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8.597 3.2A1 1 0 0 0 7.04 4.289a3.49 3.49 0 0 1 .057 1.795 3.448 3.448 0 0 1-.84 1.575.999.999 0 0 0-.077.094c-.596.817-3.96 5.6-.941 10.762l.03.049a7.73 7.73 0 0 0 2.917 2.602 7.617 7.617 0 0 0 3.772.829 8.06 8.06 0 0 0 3.986-.975 8.185 8.185 0 0 0 3.04-2.864c1.301-2.2 1.184-4.556.588-6.441-.583-1.848-1.68-3.414-2.607-4.102a1 1 0 0 0-1.594.757c-.067 1.431-.363 2.551-.794 3.431-.222-2.407-1.127-4.196-2.224-5.524-1.147-1.39-2.564-2.3-3.323-2.788a8.487 8.487 0 0 1-.432-.287Z"/>
+                                </svg>
+                                Promociones
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="#" class="inline-flex items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                                <svg class="w-5 h-5 me-3 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M18 7.5h-.423l-.452-1.09.3-.3a1.5 1.5 0 0 0 0-2.121L16.01 2.575a1.5 1.5 0 0 0-2.121 0l-.3.3-1.089-.452V2A1.5 1.5 0 0 0 11 .5H9A1.5 1.5 0 0 0 7.5 2v.423l-1.09.452-.3-.3a1.5 1.5 0 0 0-2.121 0L2.576 3.99a1.5 1.5 0 0 0 0 2.121l.3.3L2.423 7.5H2A1.5 1.5 0 0 0 .5 9v2A1.5 1.5 0 0 0 2 12.5h.423l.452 1.09-.3.3a1.5 1.5 0 0 0 0 2.121l1.415 1.413a1.5 1.5 0 0 0 2.121 0l.3-.3 1.09.452V18A1.5 1.5 0 0 0 9 19.5h2a1.5 1.5 0 0 0 1.5-1.5v-.423l1.09-.452.3.3a1.5 1.5 0 0 0 2.121 0l1.415-1.414a1.5 1.5 0 0 0 0-2.121l-.3-.3.452-1.09H18a1.5 1.5 0 0 0 1.5-1.5V9A1.5 1.5 0 0 0 18 7.5Zm-8 6a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"/>
+                                </svg>
+                                Settings
+                            </a>
+                        </li> -->
+                    </ul>
+                    <div class="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+                        
+                        <button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center me-2 mb-2 float-right inline-flex" data-drawer-target="drawer-example" data-drawer-show="drawer-example" aria-controls="drawer-example">
+                            <svg class="w-6 h-6 text-white me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"></path>
+                            </svg>
+                            Agregar Imagen
+                        </button>
+
+
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Banner de imágenes principal</h3>
+                        <div class="container pt-4">
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                                <div class="relative inline-flex">
+                                    <img class="h-auto max-w-full rounded-lg" src="assets/images/main-banner/banner-1.jpg" alt="">
+                                    <div data-tooltip-target="tooltip-light" data-tooltip-placement="left" data-tooltip-style="light" class="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-bold text-white bg-white border-2 border-white rounded-full -topend-2 dark:border-gray-900 cursor-pointer">
+                                        <svg class="w-6 h-6 text-red-600 dark:text-white transition duration-150 ease-in-out" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+                                        </svg>
+                                    </div>
+                                    <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-red-700 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+                                        Eliminar Imagen
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                    
+                                </div>
+                                <div>
+                                    <img class="h-auto max-w-full rounded-lg" src="assets/images/main-banner/banner-2.jpg" alt="">
+                                </div>
+                                <div>
+                                    <img class="h-auto max-w-full rounded-lg" src="assets/images/main-banner/banner-3.jpg" alt="">
+                                </div>
+                                <div>
+                                    <img class="h-auto max-w-full rounded-lg" src="assets/images/main-banner/banner-4.jpg" alt="">
+                                </div>
+                                <div>
+                                    <img class="h-auto max-w-full rounded-lg" src="assets/images/main-banner/banner-5.jpg" alt="">
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- drawer component -->
+                        <div id="drawer-example" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-m27 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-label">
+                            <h5 id="drawer-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400">
+
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v9m-5 0H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2M8 9l4-5 4 5m1 8h.01"/>
+                                </svg>                                  
+                                Carga tus archivos
+                            </h5>
+                            <button type="button" data-drawer-hide="drawer-example" aria-controls="drawer-example" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close menu</span>
+                            </button>
+                            
+                            <p class="mb-6 text-sm text-gray-500 dark:text-gray-400">Seleccione una o más imagenes para cargar. Se recomienda que tenga un tamaño de 1140px por 380px para el formato grande y de 675px por 450px para la versión móvil. Se recomienda usar el formato de imagen .jpg</p>
+                            <p>Recuerda que por cada imagen en formato grande debes incluir una para versión móvil.</p>
+
+                            <div class="mt-4">
+                                <form class="max-w-lg mx-auto">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="inputmainban">Seleccione Archivos</label>
+                                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="inputmainban" type="file" accept="image/png, image/jpeg" multiple>
+                                    <!-- <div class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">A profile picture is useful to confirm your are logged into your account</div> -->
+                                    <div id="listaFiles" class="grid grid-cols-3 md:grid-cols-3 gap-2"></div>
+
+                                </form>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cancelar</button>
+                                <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v2a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-2M12 4v12m0-12 4 4m-4-4L8 8"/>
+                                    </svg>
+                                    Registrar
+                                </button>
+
+                                <a href="#" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Learn more</a>
+                                <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get access 
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+
+
+                        <p class="mb-2">
+                            This is some placeholder content the Profile tab's associated content, clicking another tab will toggle the visibility of this one for the next.
+                        </p>
+                        <p>The tab JavaScript swaps classes to control the content visibility and styling.</p> 
+                    </div>
+                </div>
+
+
             </div>
         </section>
         
@@ -187,35 +338,6 @@
     </main>
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6">
-            <div class="flex flex-wrap justify-between">
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-3">Tiendas MODE</h3>
-                    <p class="text-white">Siempre Precios Bajos</p>
-                </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h4 class="text-lg font-semibold mb-3">Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="#" class="hover:text-blue-400">Inicio</a></li>
-                        <li><a href="#productos" class="hover:text-blue-400">Productos</a></li>
-                        <li><a href="promociones.html" class="hover:text-blue-400">Promociones</a></li>
-                        <li><a href="#nosotros" class="hover:text-blue-400">Nosotros</a></li>
-                        <li><a href="#contacto" class="hover:text-blue-400">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h4 class="text-lg font-semibold mb-3">Contacto</h4>
-                    <p class="text-white">Email: contacto@modetiendas.mx</p>
-                    <p class="text-white">Teléfono: (271) 71-2-90-90/71-2-40-50</p>
-                </div>
-                <div class="w-full md:w-1/4">
-                    <h4 class="text-lg font-semibold mb-3">Síguenos</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
                 <p class="text-white">&copy; 2024 Tiendas MODE. Todos los derechos reservados.</p>
             </div>
@@ -229,10 +351,24 @@
             const backToTopButton = document.getElementById('backToTop');
             const mainCarousel = document.getElementById('main-banner');
             const imagesPromos = new Array(["banner-1.jpg","banner-1m.jpg"],["banner-2.jpg","banner-2m.jpg"],["banner-3.jpg","banner-3m.jpg"],["banner-4.jpg","banner-4m.jpg"],["banner-5.jpg","banner-5m.jpg"]);
-            let currentIndex = 0;
-            let interval;
+
+            var input = document.getElementById('inputmainban');
+            var label = document.getElementById('listaFiles');
+            input.addEventListener( 'change', function( e ) {
+                filest = this.files;
+                let txtfile = '';
+                for (let i = 0; i < filest.length; i++) {
+                    txtfile += `<span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">${filest[i].name}</span>`
+                }
+                label.innerHTML = txtfile;
+            });
         });
+
+        
+
+    
+
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>

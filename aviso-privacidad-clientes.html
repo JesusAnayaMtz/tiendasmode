@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="promociones, cerveza, modelhogar, mode, cordoba veracruz"/>
+    <meta name="description" content="Depositos mode de venta de cerveza, refrescos, vinos y licores del centro de veracruz, siempre precios bajos"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <title>MODE - Siempre Precios Bajos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <style>
+        /* para el carrusel principal */
+        swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        swiper-slide {
+            background-position: center;
+            background-size: cover;
+        }
+        swiper-slide img {
+            display: block;
+            width: 100%;
+        }
+
+        /* Inicia seccion de style para el carrusel de productos */
+        .product-swiper {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 1rem;
+        }
+        .product-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        .product-swiper .swiper-pagination-bullet {
+            background: #173861;
+        }
+        .product-swiper .swiper-button-next,
+        .product-swiper .swiper-button-prev {
+            color: #173861;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .product-swiper .swiper-button-next:after,
+        .product-swiper .swiper-button-prev:after {
+            font-size: 1rem;
+        }
+        .product-card {
+            background: #f8f9fa;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        /*Finaliza seccion de carrusel de productos*/
+        p {
+            color: #173861;
+        }
+        h2 {
+            color: #173861;
+        }
+        .bg-gradient {
+            background: linear-gradient(180deg, #144a8d  0%, #081633 100%);
+        }        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        #backToTop {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            transform: translateY(-5px); /* Pequeño desplazamiento al hacer hover */
+        }
+        
+        /* Estilos para el menú móvil */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+            #banne-brands-m {
+                display: block;
+            }
+        }
+        .styleimgitem {
+            border-radius: 1rem;
+        }
+        .item-menu:hover {
+            border-bottom: 1px solid #80b8ff;
+            color: rgb(0 76 172);
+        }
+        .quejabtn {
+            background-color: #fff0f0;
+        }
+        .sugerenciabtn {
+            background-color: #f0faff;
+        }
+
+        input[type="radio"]:checked + label span {
+            --tw-border-opacity: 1;
+            border-color: rgb(99 102 241 / var(--tw-border-opacity));
+            --tw-bg-opacity: 1;
+            background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+            --tw-shadow: inset 0 0px 0px 3.5px #E7E7FF;
+            --tw-shadow-colored: inset 0 0px 0px 3.5px var(--tw-shadow-color);
+            box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        }
+
+        input[type="radio"] + label span {
+            transition: background .2s, transform .2s;
+        }
+        .ps-3\.5 {
+            -webkit-padding-start: .875rem;
+            padding-inline-start: .875rem;
+        }
+        .start-0 {
+            inset-inline-start: 0;
+        }
+        .ps-10 {
+            -webkit-padding-start: 2.5rem;
+            padding-inline-start: 2.5rem;
+        }
+        .ps-2\.3 {
+            -webkit-padding-start: 2.3rem;
+            padding-inline-start: 2.3rem;
+        }
+        .w-25 {
+            width: 25rem;
+        }
+    </style>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css " rel="stylesheet"/> -->
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-8 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="./assets/images/logo.png" alt="Tiendas MODE Logo" title="Ya nos conoces! Siempre Precios Bajos" class="h-11 mr-4">
+                </div>
+                <div class="hidden md:block">
+                    <p class=" text-3xl font-bold text-center ">Bienvenido a Tiendas MODE</p>
+                </div>
+                <div class="hidden md:flex items-center font-medium">
+                    <a href="index.html" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Inicio</a>
+                    <a href="#productos" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Nuestros Productos</a>
+                    <a href="promociones.html" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Promociones</a>
+                    <a href="#nosotros" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Nosotros</a>
+                    <a href="#contacto" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Contacto</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="mobile-menu mt-4 md:hidden">
+                <a href="#" class="block text-gray-800 hover:text-blue-600 py-2">Inicio</a>
+                <a href="#productos" class="block text-gray-800 hover:text-blue-600 py-2">Nuestros Productos</a>
+                <a href="promociones.html" class="block text-gray-800 hover:text-blue-600 py-2">Promociones</a>
+                <a href="#nosotros" class="block text-gray-800 hover:text-blue-600 py-2">Nosotros</a>
+                <a href="#contacto" class="block text-gray-800 hover:text-blue-600 py-2">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="bg-gradient py-3">
+            <div class="container mx-auto">
+                <swiper-container class="mySwiper main-carousel" autoplay="true" pagination="true" pagination-clickable="true" space-between="30" effect="fade" id="main-banner">
+                </swiper-container>
+            </div>
+        </section>
+
+
+        <section id="nosotros" class="bg-gradient py-8">
+            <div class="container mx-auto px-6">
+                <h2 class="text-2xl font-bold text-center mb-8 text-white text-shadow">Aviso de privacidad</h2>
+                <div class="bg-white rounded-lg shadow-xl p-4">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 text-center">Aviso de privacidad integral para nuestros clientes</h3>
+                    <div class="space-y-4 text-lg">
+                        <p class="text-left font-bold">Identidad y domicilio del responsable de los Datos Personales</p>
+                        <p class="text-justify">Representaciones HGP S.A. de C.V. (en lo sucesivo "HGP"), con domicilio en km 341 Carretera Córdoba-Veracruz, Código Postal 94960, Córdoba, Veracruz, México. HGP es responsable del uso, tratamiento y protección de los datos personales que recabaremos de nuestros clientes, y al respecto le hacemos de su conocimiento lo siguiente:</p>
+                        <p class="text-left font-bold">Datos personales</p>
+                        <p class="text-justify">Nombre completo o razón social, domicilio (código postal), RFC, régimen de incorporación fiscal, número telefónico y correo electrónico.</p>
+                        <p class="text-left font-bold">Finalidades para las que utilizaremos sus datos personales</p>
+
+
+                        <ul class="list-disc list-inside dark:text-white">
+                            <li>Brindar atención a cliente.</li>
+                            <li>Realizar un pago de servicio o recarga de telefonía móvil.</li>
+                            <li>Llevar a cabo la emisión de comprobantes fiscales.</li>
+                            <li>Registrar transacciones financieras, en cumplimiento con la legislación aplicable.</li>
+                            <li>Atender y dar seguimiento a dudas, aclaraciones o quejas.</li>
+                            <li>Garantizar la seguridad de las personas que visitan nuestras instalaciones a través de un circuito cerrado de video vigilancia.</li>
+                        </ul>
+
+                        <p class="text-left font-bold">Almacenamiento de sus datos</p>
+                        <p class="text-justify">Conservaremos sus datos personales el tiempo que sea necesario para los fines establecidos anteriormente, o durante el tiempo que exija la ley.</p>
+                        <p class="text-left font-bold">Derechos ARCO</p>
+                        <p class="text-justify">Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos, y las condiciones del uso que les damos (Acceso). También tiene derecho a solicitar la corrección de su información personal (Rectificación); que eliminemos sus datos cuando lo considere necesario (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como Derechos ARCO.</p>
+                        <p class="text-justify">Para ejercer cualquiera de sus derechos ARCO, puede enviar su solicitud a través del correo electrónico administracion@modetiendas.mx. Le informaremos sobre el procedimiento, requisitos, plazos de respuesta, y cualquier duda que tenga al respecto.</p>
+                        <p class="text-left font-bold">Mecanismos y procedimiento para revocar su consentimiento</p>
+                        <p class="text-justify">Usted puede revocar su consentimiento para el tratamiento de sus datos personales en cualquier momento, enviando una solicitud a nuestros métodos de contacto. Sin embargo, es posible que en algunos casos no podamos concluir el uso de sus datos de manera inmediata debido a obligaciones legales.</p>
+
+                        <p class="text-left font-bold">Transferencias de datos personales</p>
+                        <p class="text-justify">HGP no venderá ni compartirá sus datos personales con terceros para fines comerciales. Sin embargo, podremos compartir sus datos personales con terceros sin su consentimiento en los siguientes casos:</p>
+                        <ul class="list-disc list-inside dark:text-white">
+                            <li>Con nuestras sociedades controladoras, subsidiarias, o afiliadas bajo el mismo control.</li>
+                            <li>Cuando lo requiera una autoridad competente.</li>
+                            <li>En cumplimiento de obligaciones legales.</li>
+                        </ul>
+                        <p class="text-left font-bold">Medidas de seguridad</p>
+                        <p class="text-justify">HGP protege su información personal bajo estricta confidencialidad y ha implementado medidas de seguridad físicas, técnicas, y administrativas para prevenir el uso indebido de sus datos, conforme a la legislación aplicable.</p>
+                        <p class="text-left font-bold">Modificaciones al presente Aviso de Privacidad</p>
+                        <p class="text-justify">HGP se reserva el derecho de modificar o actualizar el presente Aviso de Privacidad en cualquier momento. Las modificaciones le serán notificadas mediante nuestra página web oficial www.modetiendas.mx/privacidad o a través de un correo electrónico.</p>
+                        <p class="text-left font-bold">Consentimiento</p>
+                        <p class="text-justify">Al proporcionar sus datos personales por cualquier medio, usted otorga su consentimiento para su tratamiento conforme a los términos del presente Aviso de Privacidad.</p>
+                            
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-3">Tiendas MODE</h3>
+                    <p class="text-white">Siempre Precios Bajos</p>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-3">Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html" class="hover:text-blue-400">Inicio</a></li>
+                        <li><a href="index.html#productos" class="hover:text-blue-400">Productos</a></li>
+                        <li><a href="promociones.html" class="hover:text-blue-400">Promociones</a></li>
+                        <li><a href="index.html#nosotros" class="hover:text-blue-400">Nosotros</a></li>
+                        <li><a href="index.html#contacto" class="hover:text-blue-400">Contacto</a></li>
+                        <li><a href="aviso-privacidad-clientes.html" class="hover:text-blue-400">Aviso de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-3">Contacto</h4>
+                    <p class="text-white">Email: contacto@modetiendas.mx</p>
+                    <p class="text-white">Teléfono: (271) 71-2-90-90/71-2-40-50</p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-semibold mb-3">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
+                <p class="text-white">&copy; 2024 Tiendas MODE. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up" title="Ir arriba"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>
+</body>
+</html>
