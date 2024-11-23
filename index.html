@@ -8,7 +8,7 @@
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
     <title>MODE - Siempre Precios Bajos</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="assets/css/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
@@ -149,8 +149,10 @@
         .w-25 {
             width: 25rem;
         }
+        .end-2\.5 {
+            inset-inline-end: .625rem;
+        }
     </style>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css " rel="stylesheet"/> -->
 </head>
 <body class="bg-gray-100">
     <header class="bg-white shadow-md">
@@ -349,30 +351,15 @@
                                         </label>
                                     </div>
                                 </div>
-
-
-
-                                <!-- <label class="block text-gray-700 text-sm font-bold mb-2">
-                                    Tipo de Contacto
-                                </label>
-                                <select id="tipoContacto"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                    <option value="sugerencia">Sugerencia</option>
-                                    <option value="queja">Queja</option>
-                                </select> -->
                             </div>
-                    
                             <!-- Contenedor para el formulario dinámico -->
                             <div id="formularioDinamico"></div>
 
-                            <!-- //------------------- -->
-                            
-                    
                             <div class="flex items-center justify-center">
-                                <button type="submit"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                     Enviar
                                 </button>
+                                <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"></button>
                             </div>
                         </form>
                     </div>
@@ -383,11 +370,12 @@
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15100.820247529491!2d-96.9195014!3d18.8779819!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4eff8f6795289%3A0x2d13b00e7e5128a3!2sRepresentaciones%20HGP!5e0!3m2!1ses-419!2smx!4v1728876901883!5m2!1ses-419!2smx"
                                     width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
                             </div>
                             <div class="text-gray-700">
-                                <p class="mb-2"><strong>Correo:</strong> contacto@modetiendas.mx</p>
-                                <p class="mb-2"><strong>Teléfono:</strong> 2717129090 / 7124050</p>
+                                <p class="mb-2"><strong>Correo:</strong> contactoclientes@modetiendas.mx</p>
+                                <p class="mb-2"><strong>Teléfono:</strong> 271.71.29090 / 271.71.24050 / 271.71.21908</p>
                                 <p class="mb-2"><strong>Dirección:</strong> Carretera Estatal Córdoba-Veracruz Km. 340, Colonia
                                     Zona Industrial, Código Postal 94690, Municipio Córdoba, Estado Veracruz, México</p>
                             </div>
@@ -396,6 +384,32 @@
                 </div>
             </div>
         </section>
+        
+    
+        <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal" onclick="almodal.toggle()">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-red-400 w-12 h-12 dark:text-red-200 hidden" id="errormsj" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+
+                        <svg class="mx-auto mb-4 text-green-400 w-12 h-12 dark:text-green-200 hidden" id="okmsj" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400" id="responseReport"></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
     </main>
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6">
@@ -437,17 +451,15 @@
     <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none transition-all duration-300 opacity-0 invisible">
         <i class="fas fa-arrow-up" title="Ir arriba"></i>
     </button>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> -->
     <script src="assets/js/flowbite.min.js"></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/locales/es.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script> -->
-    
     <script>
+        const imagesPromos = new Array(["banner-1.jpg","banner-1m.jpg"],["banner-2.jpg","banner-2m.jpg"],["banner-3.jpg","banner-3m.jpg"],["banner-4.jpg","banner-4m.jpg"],["banner-5.jpg","banner-5m.jpg"]);
+        var tiporep = 1;
+        var almodal;
         document.addEventListener('DOMContentLoaded', function () {
             const backToTopButton = document.getElementById('backToTop');
             const mainCarousel = document.getElementById('main-banner');
-            const imagesPromos = new Array(["banner-1.jpg","banner-1m.jpg"],["banner-2.jpg","banner-2m.jpg"],["banner-3.jpg","banner-3m.jpg"],["banner-4.jpg","banner-4m.jpg"],["banner-5.jpg","banner-5m.jpg"]);
+            
             let currentIndex = 0;
             let interval;
 
@@ -529,8 +541,7 @@
         });
 
         
-
-    // Texto de prueba para tiendas
+        // Texto de prueba para tiendas
         const tiendas = [
             'MT La Once - Av 11, C. 12. ',
             'MT San Jose - Av 9, C. 10',
@@ -539,7 +550,6 @@
         ];
 
         // Platilla del formulario para quejas
-
         const formularioQuejas = `
            <div class="mb-4">
                 <label for="tienda-rep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tienda</label>
@@ -559,17 +569,14 @@
             </div>
             <div class="mb-4">
                 <label for="fecha-rep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha del suceso</label>
-
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                         </svg>
                     </div>
-                    <input datepicker id="fecha-rep" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    <input datepicker id="fecha-rep" name="fecha-rep" autocomplete="off" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seleccione Fecha del suceso">
                 </div>
-
-               
             </div>
             <div class="mb-4">
                 <label for="hora-rep" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hora del suceso</label>
@@ -606,7 +613,7 @@
             </div>
             <div class="mb-4">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Queja</label>
-                <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Describa la situación o suceso" required></textarea>
+                <textarea id="message" name="message-rep" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Describa la situación o suceso" required></textarea>
             </div>
         `;
 
@@ -632,54 +639,108 @@
                         <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
                         </svg>
                     </div>
-                    <input type="text" id="email-rep" name="email-rep" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@domain.com">
+                    <input type="email" id="email-rep" name="email-rep" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="direccion@dominio.com">
                 </div>
             </div>
             <div class="mb-4">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sugerencias</label>
-                <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sus comentarios y sugerencias nos ayudan a mejorar" required></textarea>
+                <textarea id="message" name="message-rep" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sus comentarios y sugerencias nos ayudan a mejorar" required></textarea>
             </div>
         `;
 
         // Función para actualizar el formulario segun sea la queja o sugerencia seleccionada por el cliente
         function actualizarFormulario() {
-            //const tipoContacto = document.getElementsByName('tipoContacto'); 
-            const tipoContacto = document.querySelector('input[name="tipoContacto"]:checked').value; 
-            const formularioDinamico = document.getElementById('formularioDinamico');
+            let tipoContacto = document.querySelector('input[name="tipoContacto"]:checked').value; 
+            let formularioDinamico = document.getElementById('formularioDinamico');
 
             formularioDinamico.innerHTML = tipoContacto === 'queja' ? formularioQuejas : formularioSugerencias;
-
             if (tipoContacto === 'queja') {
+                tiporep = 2;
                 const datepickerEl = document.getElementById('fecha-rep');
- 
-      
                 new Datepicker(datepickerEl, {
+                    languaje: 'es',
                     format: 'dd/mm/yyyy',
                 });
-
-               
+            } else {
+                tiporep = 1;
             }
-            
         }
 
         // Función para el envio del formulario
         function manejarEnvio(event) {
             event.preventDefault();
-
             const formData = new FormData(event.target);
-            const datos = Object.fromEntries(formData.entries());
+            const datos = new URLSearchParams(formData);
 
-            // Aqui se agregara la logica para enviar el formulario
-            console.log('Datos del formulario:', datos);
-
-            // Se colocara un alert para que muestre los datos que envio el cliente
-            alert('Formulario enviado con éxito!\n\n' + JSON.stringify(datos, null, 2));
-
-            // reset del formulario
-            event.target.reset();
+            fetch("funciones.php?accion=sendReport", {
+                method: 'POST',
+                body: datos,
+            })
+            .then(responseData => responseData.json())
+            .then(response => {
+                if (response.success) {
+                    event.target.reset();
+                } 
+                console.log(response.message);
+                displayResponse(response.success);
+            })
+            .catch(err => {
+                console.error("ERROR: ", err.message)
+            });
         }
 
-        
+        const options = {
+            placement: 'bottom-right',
+            backdrop: 'dynamic',
+            backdropClasses:
+                'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
+            closable: true,
+            onHide: () => {
+                console.log('modal is hidden');
+            },
+            onShow: () => {
+                console.log('modal is shown');
+            },
+            onToggle: () => {
+                console.log('modal has been toggled');
+            },
+        };
+
+        // instance options object
+        const instanceOptions = {
+            id: 'popup-modal',
+            override: true
+        };
+
+        function displayResponse(status) {
+            let targetEl = document.getElementById("popup-modal");
+            let txtres = (tiporep==1)? 'Gracias. Sus comentarios son muy importantes para nosotros.':'Gracias. Le daremos seguimiento a su reporte y nos pondremos en contacto con usted.';
+            let elementError = document.getElementById("errormsj");
+            let elementOk = document.getElementById("okmsj");
+            if (status) {
+                if (elementError.classList.contains('block')) {
+                    elementError.classList.remove("block");
+                }
+                if (elementOk.classList.contains('hidden')) {
+                    elementOk.classList.remove("hidden");
+                }
+                elementError.classList.add("hidden");
+                elementOk.classList.add("block");
+                document.getElementById("responseReport").innerHTML = txtres;
+            } else {
+                if (elementOk.classList.contains('block')) {
+                    elementOk.classList.remove("block");
+                }
+                if (elementError.classList.contains('hidden')) {
+                    elementError.classList.remove("hidden");
+                }
+                elementOk.classList.add("hidden");
+                elementError.classList.add("block");
+                document.getElementById("responseReport").innerHTML = "Ocurrio un error. El servicio no esta disponible por el momento. Intente nuevamente o comuniquese a nuestras oficinas.";
+            }
+            almodal = new Modal(targetEl, options, instanceOptions);
+            almodal.toggle();
+        }
 
         // Inicializar el formulario
         actualizarFormulario();
