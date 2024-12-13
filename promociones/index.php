@@ -1,7 +1,7 @@
 <?php 
 $arrFilesProm = array();
 $arrTagBtn = array();
-$ruta = "assets/images/promos/";
+$ruta = "../assets/images/promos/";
 $iterator = new FilesystemIterator($ruta);
 $dir = '';
 foreach($iterator as $entry) {
@@ -13,7 +13,7 @@ foreach($iterator as $entry) {
     }
 }
 
-$ruta = "assets/images/grid-promos/";
+$ruta = "../assets/images/grid-promos/";
 $iterator = new FilesystemIterator($ruta);
 foreach($iterator as $entry) {
     $nfile = explode('.',substr($entry->getFilename(),1));
@@ -30,7 +30,7 @@ foreach($iterator as $entry) {
     <meta http-equiv="cache-control" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
     <title>MODE - Siempre Precios Bajos</title>
-    <link href="assets/css/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @media (max-width: 768px) {
@@ -44,7 +44,6 @@ foreach($iterator as $entry) {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) ;
             }
         }
-       
         .modal {
             display: none;
             position: fixed;
@@ -67,9 +66,9 @@ foreach($iterator as $entry) {
         .close {
             color: white;
             position: absolute;
-            top: 10px;
+            text-shadow: black 0px 5px;
             right: 25px;
-            font-size: 35px;
+            font-size: 45px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1010;
@@ -102,7 +101,6 @@ foreach($iterator as $entry) {
         .rounded-s1 {
             border-radius: 2rem 2rem 0rem 0rem;
         }
-       
     </style>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -112,14 +110,13 @@ foreach($iterator as $entry) {
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="./assets/images/logo.png" title="Ya nos conoces! Siempre Precios Bajos" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4 redirtohome">
+                    <img src="../assets/images/logo.png" title="Ya nos conoces! Siempre Precios Bajos" alt="ModelHogar Logo" class="h-8 mr-2 sm:h-11 sm:mr-4 redirtohome">
                 </div>
                 <div class="hidden md:block">
-                    <p class="text-xl sm:text-3xl font-bold text-center" style="color: #173861;">Bienvenido a Tiendas
-                        Mode</p>
+                    <p class="text-xl sm:text-3xl font-bold text-center" style="color: #173861;">¡Siempre Precios Bajos!</p>
                 </div>
                 <div>
-                    <button id="mobile-menu-button" class="blue-mode hover:text-blue-b redirtohome" onclick="window.location.replace('index.php')">
+                    <button id="mobile-menu-button" class="blue-mode hover:text-blue-b redirtohome" onclick="window.location.replace('../index.php')">
                         <i class="fa-solid fa-house-chimney text-3xl" title="Ver Nuestra Página Principal"></i>
                     </button>
                 </div>
@@ -141,7 +138,7 @@ foreach($iterator as $entry) {
 
     <!-- NUEVO MODAL PROMOCIONAL -->
     <div id="modal-promo" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close text-xl" onclick="closeModal()">&times;</span>
         <div class="modal-content content overflow-scroll">
             <div class="section h-full mt-8">
                 <div class="grid grid-cols-6 md:grid-cols-6 sm:grid-cols-2 grid-auto-columns-1/3 py-6" id="promos-content">
@@ -162,7 +159,7 @@ foreach($iterator as $entry) {
 
         document.addEventListener('DOMContentLoaded', function () {
             redirtohome.addEventListener('click', () => {
-                location.href="index.php";
+                location.href="../index.php";
             });
             deployPromoGrids();
         });
@@ -177,7 +174,7 @@ foreach($iterator as $entry) {
                     img.classList.add("w-full","rounded-lg","object-cover" ); 
                     
                     divC.classList.add("relative","m-3","shadow-lg");
-                    img.setAttribute("src",`./assets/images/promos/${promotag}/${image}`);
+                    img.setAttribute("src",`../assets/images/promos/${promotag}/${image}`);
                     img.setAttribute("width","275");
                     divC.append(img);
                     slideContent.append(divC);
@@ -192,7 +189,7 @@ foreach($iterator as $entry) {
                 let img = document.createElement("img");
                 divC.classList.add("bg-grid","p-2","sm:p-4", "rounded-lg", "shadow-md");
                 img.classList.add("w-full","h-32", "sm:h-48", "object-cover", "rounded", "cursor-pointer","promo-image");
-                img.setAttribute("src","./assets/images/grid-promos/"+gridsPromos[clave]);
+                img.setAttribute("src","../assets/images/grid-promos/"+gridsPromos[clave]);
                 img.setAttribute("onclick",`openModal("${clave}")`);
                 img.setAttribute("title",`Nuestras Promociones en ${clave}`);
                 divC.append(img);

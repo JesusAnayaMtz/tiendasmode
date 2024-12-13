@@ -1,4 +1,5 @@
 <?php 
+session_start(); 
 $arrMainBanner = array();
 $ruta = "assets/images/main-banner/";
 $iterator = new FilesystemIterator($ruta);
@@ -10,6 +11,19 @@ foreach($iterator as $entry) {
     } else {
         $arrMainBanner[$dir][] = $entry->getFilename();
     }
+}
+$valid = (empty($_SESSION['usuario']))? '':'<a href="adminpanel/index.php" class="block text-gray-800 hover:text-blue-600 py-2">AdminPanel</a>';
+
+require_once "assets/config/DbWork.php";
+$conexion = new DbWork();
+$branches = array();
+if ($conexion->connect()) {
+    $sql = "SELECT * FROM `store_address` ORDER BY `cmpio` ASC, cnombempr ASC";
+    $result = $conexion->execute($sql);
+    $branches = $result->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    echo "ERROR";
+    print_r($conexion->error);
 }
 ?>
 <!DOCTYPE html>
@@ -176,14 +190,15 @@ foreach($iterator as $entry) {
                     <img src="./assets/images/logo.png" alt="Tiendas MODE Logo" title="Ya nos conoces! Siempre Precios Bajos" class="h-11 mr-4">
                 </div>
                 <div class="hidden md:block">
-                    <p class=" text-3xl font-bold text-center ">Bienvenido a Tiendas MODE</p>
+                    <p class=" text-3xl font-bold text-center ">Siempre Precios Bajos</p>
                 </div>
                 <div class="hidden md:flex items-center font-medium">
                     <a href="#" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Inicio</a>
                     <a href="#productos" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Nuestros Productos</a>
-                    <a href="promociones.php" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Promociones</a>
+                    <a href="promociones/" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Promociones</a>
                     <a href="#nosotros" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Nosotros</a>
                     <a href="#contacto" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">Contacto</a>
+                    <?= (empty($_SESSION['usuario']))? '':'<a href="adminpanel/index.php" class="text-gray-900 hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 mx-3 item-menu">AdminPanel</a>'; ?>
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-800 hover:text-blue-600">
@@ -194,9 +209,10 @@ foreach($iterator as $entry) {
             <div id="mobile-menu" class="mobile-menu mt-4 md:hidden">
                 <a href="#" class="block text-gray-800 hover:text-blue-600 py-2">Inicio</a>
                 <a href="#productos" class="block text-gray-800 hover:text-blue-600 py-2">Nuestros Productos</a>
-                <a href="promociones.html" class="block text-gray-800 hover:text-blue-600 py-2">Promociones</a>
+                <a href="promociones/" class="block text-gray-800 hover:text-blue-600 py-2">Promociones</a>
                 <a href="#nosotros" class="block text-gray-800 hover:text-blue-600 py-2">Nosotros</a>
                 <a href="#contacto" class="block text-gray-800 hover:text-blue-600 py-2">Contacto</a>
+                <?= (empty($_SESSION['usuario']))? '':'<a href="adminpanel/index.php" class="block text-gray-800 hover:text-blue-600 py-2">AdminPanel</a>'; ?>
             </div>
         </nav>
     </header>
@@ -347,7 +363,7 @@ foreach($iterator as $entry) {
                             <!-- Selector de tipo de formulario -->
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">
-                                    Tipo de Contacto
+                                    Seleccione la opción deseada:
                                 </label>
                                 <div class="grid sm:grid-cols-3 gap-2">
                                     <div class="block">
@@ -437,7 +453,7 @@ foreach($iterator as $entry) {
                     <ul>
                         <li><a href="#" class="hover:text-blue-400">Inicio</a></li>
                         <li><a href="#productos" class="hover:text-blue-400">Productos</a></li>
-                        <li><a href="promociones.php" class="hover:text-blue-400">Promociones</a></li>
+                        <li><a href="promociones/" class="hover:text-blue-400">Promociones</a></li>
                         <li><a href="#nosotros" class="hover:text-blue-400">Nosotros</a></li>
                         <li><a href="#contacto" class="hover:text-blue-400">Contacto</a></li>
                         <li><a href="aviso-privacidad-clientes.html" class="hover:text-blue-400">Aviso de Privacidad</a></li>
@@ -451,9 +467,8 @@ foreach($iterator as $entry) {
                 <div class="w-full md:w-1/4">
                     <h4 class="text-lg font-semibold mb-3">Síguenos</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/tiendasmode.mx?mibextid=ZbWKwL" target="_blank" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/522717403452" target="_blank" class="hover:text-blue-400"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -468,16 +483,18 @@ foreach($iterator as $entry) {
     <script src="assets/js/flowbite.min.js"></script>
     <script>
         const imagesPromos = <?= json_encode($arrMainBanner) ?>;
+        const branches = <?= json_encode($branches) ?>;
         var tiporep = 1;
         var almodal;
+        var branchesList = '';
         document.addEventListener('DOMContentLoaded', function () {
             const backToTopButton = document.getElementById('backToTop');
             const mainCarousel = document.getElementById('main-banner');
             
             let currentIndex = 0;
             let interval;
-
             mainCarousel.innerHTML = "";
+
             for (let clave in imagesPromos){
                 let swiplide = document.createElement("swiper-slide");
                 let pic = document.createElement("picture");
@@ -547,11 +564,14 @@ foreach($iterator as $entry) {
                     behavior: 'smooth'
                 });
             });
+
             // Eventos para el manejo del formulario
             document.getElementById('tipoContactoQ').addEventListener('change', actualizarFormulario);
             document.getElementById('tipoContactoS').addEventListener('change', actualizarFormulario);
             document.getElementById('contactForm').addEventListener('submit', manejarEnvio);
         });
+
+        getStoreAddress();
         
         // Texto de prueba para tiendas
         const tiendas = [
@@ -573,9 +593,7 @@ foreach($iterator as $entry) {
                     </div>
                     <select id="tienda-rep" name="tienda-rep" class="ps-2.3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="">Seleccione una tienda</option>
-                        <optgroup label="Cordoba">
-                            ${tiendas.map(tienda => `<option value="${tienda}">${tienda}</option>`).join('')}
-                        </optgroup>
+                            ${branchesList}
                     </select>
                 </div>
             </div>
@@ -752,6 +770,19 @@ foreach($iterator as $entry) {
             }
             almodal = new Modal(targetEl, options, instanceOptions);
             almodal.toggle();
+        }
+
+        function getStoreAddress() { 
+            var block = '';
+            branches.forEach((element) => {
+                
+                let mpio = element['cmpio'].toUpperCase();
+                if (block != mpio) {
+                    branchesList = branchesList + ((block=='')? '':'</optgroup>') + `<optgroup label="${mpio}">`;
+                    block = mpio;
+                }
+                branchesList = branchesList +`<option value="${element['cclavempr']}">MODE ${element['cnombempr']} - ${element['cdir']}</option>`;
+            });
         }
 
         // Inicializar el formulario
